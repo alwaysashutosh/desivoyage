@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("images/grid.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .form-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-section h3 {
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Travel Booking Form</h1>
+        <form action="#" method="POST">
+            <!-- Destination Section -->
+            <form action="{% url 'book' %}" method="POST">
+                {% csrf_token %}
+            <div class="form-section">
+                <h3>Destination Information</h3>
+                <div class="form-group">
+                    <label for="destination">Where do you want to go?</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure-city">Departure City</label>
+                    <input type="text" id="departure-city" name="departure-city" required>
+                </div>
+            </div>
+
+            <!-- Travel Dates -->
+            <div class="form-section">
+                <h3>Travel Dates</h3>
+                <div class="form-group">
+                    <label for="departure-date">Departure Date</label>
+                    <input type="date" id="departure-date" name="departure-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="return-date">Return Date</label>
+                    <input type="date" id="return-date" name="return-date" required>
+                </div>
+            </div>
+
+            <!-- Travelers Information -->
+            <div class="form-section">
+                <h3>Travelers</h3>
+                <div class="form-group">
+                    <label for="adults">Adults (12+ years)</label>
+                    <input type="number" id="adults" name="adults" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="children">Children (2-11 years)</label>
+                    <input type="number" id="children" name="children" min="0" value="0">
+                </div>
+            </div>
+
+            <!-- Travel Class -->
+            <div class="form-section">
+                <h3>Travel Class</h3>
+                <div class="form-group">
+                    <select name="travel-class" required>
+                        <option value="economy">Economy Class</option>
+                        <option value="business">Business Class</option>
+                        <option value="first">First Class</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="form-section">
+                <h3>Additional Services</h3>
+                <div class="form-group">
+                    <div>
+                        <input type="checkbox" id="accommodation" name="accommodation">
+                        <label for="accommodation">Include Accommodation</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="activities" name="activities">
+                        <label for="activities">Include Activities & Tours</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Requirements -->
+            <div class="form-section">
+                <h3>Special Requirements</h3>
+                <div class="form-group">
+                    <textarea name="special-requirements" rows="4" placeholder="Enter any special requirements or requests..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">Submit Form</button>
+        </form>
+    </div>
+</body>
+</html>

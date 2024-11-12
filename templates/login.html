@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to DesiVoyage</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: 'Karla', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#C7DBF4] font-family-karla h-screen">
+
+    <div class="w-full flex flex-wrap">
+
+        <!-- Login Section -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center">
+
+            <div class="flex justify-center pt-12">
+                <a href="index.html" class="bg-black text-white font-bold text-xl px-4 py-2 rounded">✈️ DesiVoyage</a>
+            </div>
+
+            <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg mt-8">
+                <h1 class="text-3xl text-center text-gray-800 mb-6">Login to DesiVoyage</h1>
+                <form method="post" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="flex flex-col">
+                        <label for="username" class="text-lg">Username:</label>
+                        <input type="text" id="username" name="username" required
+                               class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="password" class="text-lg">Password:</label>
+                        <input type="password" id="password" name="password" required
+                               class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+
+                    <input type="submit" value="Login"
+                           class="w-full bg-[#2980b9] text-blue font-bold text-lg py-2 mt-4 rounded hover:bg-[#87CEEB] transition duration-300 cursor-pointer">
+                </form>
+
+                <div class="text-center pt-6">
+                    <p>Don't have an account? <a href="register.html" class="underline text-blue-600 font-semibold">Register here.</a></p>
+                    
+                </div>
+            </div>
+
+            <!-- Pop-up message container -->
+            {% if messages %}
+            <div class="message-container mt-4 w-full max-w-md bg-[#2980b9] text-black text-center p-3 rounded-lg shadow-md">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Image Section -->
+        <div class="w-1/2 shadow-2xl hidden md:block">
+            <img class="object-cover w-full h-screen" src="{% static 'images/grid.jpg' %}">
+        </div>
+
+    </div>
+
+</body>
+</html>

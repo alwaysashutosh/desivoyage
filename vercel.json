@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "desivoyage_backend/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+
+
+
+
+    {
+      "src": "/(.*)",
+      "dest": "desivoyage_backend/wsgi.py"
+    }
+  ],
+  "buildCommand": "export PATH=$PATH:/path/to/pg_config/directory && pip install -r requirements.txt && python manage.py collectstatic --noinput"
+}
