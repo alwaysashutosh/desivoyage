@@ -12,3 +12,7 @@ DesiVoyage is a web-based travel booking platform built using Django. This appli
 - Dynamic Styling: Beautiful UI with CSS and background image integration for a modern, clean design.
 
 
+
+- Efficiently running on local host , working on production deployment
+
+
