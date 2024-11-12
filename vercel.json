@@ -19,14 +19,10 @@
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },
-
-
-
-
     {
       "src": "/(.*)",
       "dest": "desivoyage_backend/wsgi.py"
     }
   ],
-  "buildCommand": "export PATH=$PATH:/path/to/pg_config/directory && pip install -r requirements.txt && python manage.py collectstatic --noinput"
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
 }
