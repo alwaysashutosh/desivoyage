@@ -33,8 +33,16 @@ urlpatterns = [
     path('/login/logout/', views.logout_view, name='logout'),
     path('/login/book/', views.book_view, name='book'),
     path('/login/register/login.html', views.login_view, name='login'),
-    path('/login/register/register.html', views.register_view, name='register'),
-    path('/login/register/index.html', views.home, name='home'),
+    path('%2Flogin/register/register.html', views.register_view, name='register'),
+    path('/%2Flogin/register/index.html', views.home, name='home'),
+    path('/%2Flogin/register/', views.register_view, name='register'),
+    path('/%2Flogin/redirect/', views.redirect_view, name='redirect'),
+    path('/%2Flogin/logout/', views.logout_view, name='logout'),
+    path('/%2Flogin/book/', views.book_view, name='book'),
+    path('/%2Flogin/register/login.html', views.login_view, name='login'),
+    path('/%2Flogin/register/register.html', views.register_view, name='register'),
+    path('/%2Flogin/register/index.html', views.home, name='home'),
+    
     
 ]
 
